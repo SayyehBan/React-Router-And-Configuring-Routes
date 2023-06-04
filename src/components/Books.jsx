@@ -1,12 +1,21 @@
 import React from 'react'
+import { getBooks } from '../data/data'
+import { Link } from 'react-router-dom';
 
 const Books = () => {
+    const books = getBooks();
   return (
-       <div style={{ padd: "1rem 0" }}>
-          <h2>
-              کنار ما باشید با یک کتاب زیبا ریکت
-              
-          </h2>
+       <div style={{ display:'flex' }}>
+          <nav style={{ borderLeft:'solid 1px', padding: "1rem" }} >
+              <input type="text" placeholder='جستجو کتاب' />
+
+              <br/>
+              {books.map((book) => (
+                  <Link style={{display:'block'}} to={`/books/${book.number}`} key={book.number}>
+                      {book.name}
+                      </Link>
+              ))}
+         </nav>
     </div>
   )
 }
