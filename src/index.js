@@ -17,8 +17,14 @@ root.render(
       <Routes>
         <Route path="/" element={<App />} >
           <Route path="/about-us" element={<About />} />
-          <Route path="/books" element={<Books />} />
-          <Route path="/books/:bookId" element={<Book />} />
+          <Route path="/books" element={<Books />} >
+            <Route index element={<main style={{ padding: '1rem' }}>
+              <p>
+                کتاب مورد نظر خود را انتخاب نمائید
+              </p>
+            </main>} />
+            <Route path=":bookId" element={<Book />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

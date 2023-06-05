@@ -1,6 +1,6 @@
 import React from 'react'
 import { getBooks } from '../data/data'
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 const Books = () => {
     const books = getBooks();
@@ -15,7 +15,8 @@ const Books = () => {
                       {book.name}
                       </Link>
               ))}
-         </nav>
+      </nav>
+      <Outlet/>
     </div>
   )
 }
