@@ -4,8 +4,9 @@ import { getBook } from '../data/data';
 
 const Book = () => {
   const params = useParams();
-    const book = getBook(parseInt(params.bookId));
-  return (
+  const book = getBook(parseInt(params.bookId));
+  if (book) {
+      return (
     <main style={{padding:'1rem'}}>
       <h2>قیمت کل : {book.amount} تومان</h2>
       <p>
@@ -19,6 +20,12 @@ const Book = () => {
       </p>
     </main>
   )
+  } else {
+    return <main style={{ padding: '1rem' }}><p>
+            گشتم نبود نگرد نیست
+          </p></main>
+  }
+
 }
 
 export default Book
