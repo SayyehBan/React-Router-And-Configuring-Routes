@@ -1,6 +1,6 @@
 import React from 'react'
 import { getBooks } from '../data/data'
-import { Link, Outlet } from 'react-router-dom';
+import {  NavLink, Outlet } from 'react-router-dom';
 
 const Books = () => {
     const books = getBooks();
@@ -11,9 +11,15 @@ const Books = () => {
 
               <br/>
               {books.map((book) => (
-                  <Link style={{display:'block'}} to={`/books/${book.number}`} key={book.number}>
+                <NavLink style={({ isActive }) => {
+                  return {
+                    display: 'block',
+                    margin: '1rem 0',
+                    color:isActive?"red":"black"
+                  }
+                  }} to={`/books/${book.number}`} key={book.number}>
                       {book.name}
-                      </Link>
+                      </NavLink>
               ))}
       </nav>
       <Outlet/>
